@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d809b641f74ab0a14a661f97fcf20e, type: 3}
+  m_Name: Shockwave
+  m_EditorClassIdentifier: 
+  <BaseDamage>k__BackingField: 6
+  <BaseRadius>k__BackingField: 3
+  <Cooldown>k__BackingField: 7
+  <DamagePerLevel>k__BackingField: 5
+  <RadiusPerLevel>k__BackingField: 0.5

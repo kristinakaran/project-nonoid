@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243a8a0826a04c03b9da026b22b5f100, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 35
+  <MoveSpeed>k__BackingField: 1
+  <Color>k__BackingField: {r: 0.14662448, g: 0.86415094, b: 0.07663221, a: 1}
+  <AvailableInGameStates>k__BackingField: 010000000200000000000000
+  <Damage>k__BackingField: 5
+  <AttackRate>k__BackingField: 2
+  <AttackRange>k__BackingField: 3
