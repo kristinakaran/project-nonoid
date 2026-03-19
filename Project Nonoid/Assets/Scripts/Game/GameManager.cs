@@ -40,6 +40,8 @@ public class GameManager : Singleton<GameManager>
 
         _state = GameState.GameOver;
         Time.timeScale = 0f;
+        
+        DatabaseManager.Instance.SaveGameRun("Player", 100, 5, 30f, 2);
 
         var ui = Object.FindFirstObjectByType<GameUI>();
         if (ui != null)
@@ -50,7 +52,7 @@ public class GameManager : Singleton<GameManager>
     {
         _state = GameState.Victory;
         Time.timeScale = 0f;
-
+        
         var ui = Object.FindFirstObjectByType<GameUI>();
         if (ui != null)
             ui.ShowVictory();

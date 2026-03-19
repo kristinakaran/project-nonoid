@@ -4,23 +4,49 @@ using System.IO;
 
 public class DatabaseManager : MonoBehaviour
 {
+    public static DatabaseManager Instance;
+
+    private SQLiteConnection connection;
     private string dbPath;
 
-    private void Start()
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializeDatabase();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void InitializeDatabase()
     {
         dbPath = Path.Combine(Application.persistentDataPath, "gamedata.db");
 
-        var connection = new SQLiteConnection(dbPath);
+        connection = new SQLiteConnection(dbPath);
 
         connection.CreateTable<GameRun>();
 
+        Debug.Log("Database initialized at: " + dbPath);
+    }
+    
+    public void SaveGameRun(string playerName, int score, int enemiesKilled, float survivalTime, int levelReached)
+    {
         connection.Insert(new GameRun
         {
-            PlayerName = "Test",
-            Score = 100
+            PlayerName = playerName,
+            Score = score,
+            EnemiesKilled = enemiesKilled,
+            SurvivalTime = survivalTime,
+            LevelReached = levelReached,
+            PlayedAt = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         });
 
-        Debug.Log("Database works!");
+        Debug.Log("Game run saved.");
     }
 }
 
@@ -30,6 +56,9 @@ public class GameRun
     public int Id { get; set; }
 
     public string PlayerName { get; set; }
-
     public int Score { get; set; }
+    public int EnemiesKilled { get; set; }
+    public float SurvivalTime { get; set; }
+    public int LevelReached { get; set; }
+    public string PlayedAt { get; set; }
 }
