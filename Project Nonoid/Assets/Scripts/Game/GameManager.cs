@@ -51,6 +51,13 @@ public class GameManager : Singleton<GameManager>
             int score = enemiesKilled;
 
             DatabaseManager.Instance.SaveGameRun("Player", score, enemiesKilled, survivalTime, levelReached);
+
+            var runs = DatabaseManager.Instance.GetTopRuns();
+
+            foreach (var run in runs)
+            {
+                Debug.Log($"{run.PlayerName} | Score: {run.Score} | Kills: {run.EnemiesKilled} | Time: {run.SurvivalTime} | Level: {run.LevelReached}");
+            }
         }
 
         var ui = Object.FindFirstObjectByType<GameUI>();

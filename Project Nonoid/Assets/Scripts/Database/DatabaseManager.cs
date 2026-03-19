@@ -1,6 +1,7 @@
 using UnityEngine;
 using SQLite4Unity3d;
 using System.IO;
+using System.Linq;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -47,6 +48,14 @@ public class DatabaseManager : MonoBehaviour
         });
 
         Debug.Log("Game run saved.");
+    }
+    
+    public System.Collections.Generic.List<GameRun> GetTopRuns(int limit = 10)
+    {
+        return connection.Table<GameRun>()
+            .OrderByDescending(run => run.Score)
+            .Take(limit)
+            .ToList();
     }
 }
 
