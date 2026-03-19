@@ -50,4 +50,8 @@ public class StatsManager : MonoBehaviour
     public string GetEnemyCounterText() => enemyCounter.text;
     public string GetSecondsText() => secondsInGame.text;
     public string GetLevelText() => levelUpCounter.text;
+
+    public int GetEnemiesKilled() => _enemyKilledCounter;
+    public int GetCurrentLevel() => _level;
+    public float GetSurvivalTime() => _timeCounter;
 }

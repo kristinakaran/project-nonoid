@@ -40,8 +40,18 @@ public class GameManager : Singleton<GameManager>
 
         _state = GameState.GameOver;
         Time.timeScale = 0f;
-        
-        DatabaseManager.Instance.SaveGameRun("Player", 100, 5, 30f, 2);
+
+        var stats = Object.FindFirstObjectByType<StatsManager>();
+        if (stats != null)
+        {
+            int enemiesKilled = stats.GetEnemiesKilled();
+            float survivalTime = stats.GetSurvivalTime();
+            int levelReached = stats.GetCurrentLevel();
+
+            int score = enemiesKilled;
+
+            DatabaseManager.Instance.SaveGameRun("Player", score, enemiesKilled, survivalTime, levelReached);
+        }
 
         var ui = Object.FindFirstObjectByType<GameUI>();
         if (ui != null)
